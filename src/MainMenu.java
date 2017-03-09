@@ -1,10 +1,13 @@
 import java.util.Scanner;
 
-/**Generates the main Menu*/
+/**
+ * Generates the main Menu
+ */
 public class MainMenu{
     boolean exit = false;
+
+    /***/
     public MainMenu() {
-        System.out.println("Menu créé!");
     }
 
     public void showMenu() {

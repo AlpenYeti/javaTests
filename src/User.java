@@ -1,8 +1,6 @@
 import java.util.Scanner;
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
-
 /**
- * Created by josselin.perez on 08/03/2017.
+ * Define a User
  */
 public class User {
     static String fname;

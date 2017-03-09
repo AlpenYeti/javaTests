@@ -1,21 +1,21 @@
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Int;
 import java.util.Scanner;
 import java.util.Random;
 
 /**
- * Created by josselin.perez on 08/03/2017.
- * Ce programme fait deviner un nombre au user.
+ * "Guess a Number" game
  */
 public class guessNbr {
-    public static void main(String[ ] args) {
-        Scanner getInput = new Scanner(System.in);
+    private static int score;
+    static Scanner getInput = new Scanner(System.in);
+
+    public static void guessNbr() {
         System.out.println("Saisis le nombre maximum que tu veux deviner :");
         int limit = (getInput.nextInt());
         Random randomGenerator = new Random();
         int x = randomGenerator.nextInt(limit);
         System.out.println("Je pense à un nombre entre 1 et " + limit);
         int guess = (getInput.nextInt());
-        int score = 1;
+        score = 1;
 
         while(guess != x){
             if(guess < x){
@@ -27,13 +27,30 @@ public class guessNbr {
                 guess = (getInput.nextInt());
                 score++;
             }
-        }
-        if(score == 1){
+        }//end while
+    success();
+    }
+
+    public static void success() {
+        if (score == 1) {
             System.out.println("Wow ! Du premier coup, bravo !");
-        } else if(score < 6) {
-            System.out.println("Très le GG ! " +  score + " essais !");
+        } else if (score < 6) {
+            System.out.println("Très le GG ! " + score + " essais !");
         } else {
             System.out.println("Eh ben, " + score + " essais ?! On a vu mieux hein !");
+        }
+        System.out.println( "##################################\n" +
+                            "           Play Again ?           \n" +
+                            "##################################\n" +
+                            "1 - Yes !                         \n" +
+                            "2 - No, back to the menu please   \n");
+        int choice = (getInput.nextInt());
+        switch(choice){
+            case 1:
+                guessNbr();
+                break;
+            case 2:
+                break;
         }
     }
 }

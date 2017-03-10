@@ -8,5 +8,6 @@ public class Test {
                             "##################################");
         MainMenu menu = new MainMenu();
         menu.showMenu();
+
     }
 }

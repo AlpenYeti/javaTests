@@ -13,16 +13,19 @@ public class guessNbr {
         int limit = (getInput.nextInt());
         Random randomGenerator = new Random();
         int x = randomGenerator.nextInt(limit);
+        Test.clear();
         System.out.println("Je pense à un nombre entre 1 et " + limit);
         int guess = (getInput.nextInt());
         score = 1;
 
         while(guess != x){
             if(guess < x){
+                Test.clear();
                 System.out.println("C'est plus grand !");
                 guess = (getInput.nextInt());
                 score++;
             } else {
+                Test.clear();
                 System.out.println("C'est plus petit !");
                 guess = (getInput.nextInt());
                 score++;
@@ -32,6 +35,7 @@ public class guessNbr {
     }
 
     public static void success() {
+        Test.clear();
         if (score == 1) {
             System.out.println("Wow ! Du premier coup, bravo !");
         } else if (score < 6) {
@@ -50,6 +54,7 @@ public class guessNbr {
                 guessNbr();
                 break;
             case 2:
+                Test.clear();
                 break;
         }
     }

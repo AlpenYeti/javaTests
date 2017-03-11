@@ -10,7 +10,7 @@ public class MainMenu{
     public MainMenu() {
     }
 
-    public void showMenu() {
+    public void showMenu() throws InterruptedException {
         do{
         Scanner getInput = new Scanner(System.in);
         System.out.println( "                                  \n" +
@@ -24,6 +24,7 @@ public class MainMenu{
 
             switch (choice) {
                 case 1:
+                    Test.clear();
                     guessNbr.guessNbr();
                     break;
                 case 2:

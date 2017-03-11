@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Display the Social Network Menu
@@ -13,10 +14,11 @@ public class UserMenu {
     public UserMenu() {
     }
 
-    public void showMenu(){
+    public void showMenu() throws InterruptedException {
 //        new User();
         while(!exit) {
             Scanner getInput = new Scanner(System.in);
+            Test.clear();
             System.out.println(
                     "                                  \n" +
                     " ******************************** \n" +
@@ -27,7 +29,7 @@ public class UserMenu {
                     "2 - Edit my profile               \n" +
                     "3 - Write a message               \n" +
                     "4 - Read a message                \n" +
-                    "5 - Add a friend                  \n" +
+                    "5 - How many users ?              \n" +
                     "6 - Show a friend's profile       \n" +
                     "                                  \n" +
                     "\u001B[36m0 - Back to the main menu \u001B[m");
@@ -81,6 +83,14 @@ public class UserMenu {
                 case "4":
                     break;
                 case "5":
+                    if(list.size() < 1) {
+                        System.out.println("\u001B[41m There are no users yet ! \u001B[m");
+                        TimeUnit.SECONDS.sleep(1);
+                    } else {
+                        for(int i = 0; i<list.size();i++){
+                            System.out.println(i + " - " + list.get(i).fname + " " + list.get(i).lname + " né(e) en " + list.get(i).birthdate);
+                        }
+                    }
                     break;
                 case "6":
                     break;

@@ -16,6 +16,7 @@ public class guessNbr {
         Test.clear();
         System.out.println("Je pense à un nombre entre 1 et " + limit);
         int guess = (getInput.nextInt());
+        getInput.nextLine();
         score = 1;
 
         while(guess != x){
@@ -23,11 +24,13 @@ public class guessNbr {
                 Test.clear();
                 System.out.println("C'est plus grand !");
                 guess = (getInput.nextInt());
+                getInput.nextLine();
                 score++;
             } else {
                 Test.clear();
                 System.out.println("C'est plus petit !");
                 guess = (getInput.nextInt());
+                getInput.nextLine();
                 score++;
             }
         }//end while
@@ -39,21 +42,22 @@ public class guessNbr {
         if (score == 1) {
             System.out.println("Wow ! Du premier coup, bravo !");
         } else if (score < 6) {
-            System.out.println("Très le GG ! " + score + " essais !");
+            System.out.println("Très le GG ! \u001B[32m" + score + "\u001B[0m essais !");
         } else {
-            System.out.println("Eh ben, " + score + " essais ?! On a vu mieux hein !");
+            System.out.println("Eh ben, \u001B[31m" + score + "\u001B[0m essais ?! On a vu mieux hein !\n");
         }
         System.out.println( "##################################\n" +
-                            "           Play Again ?           \n" +
-                            "##################################\n" +
-                            "1 - Yes !                         \n" +
-                            "2 - No, back to the menu please   \n");
-        int choice = (getInput.nextInt());
+                            "         Play Again ?  [Y/n]      \n" +
+                            "##################################\n");
+        String choice = (getInput.nextLine());
         switch(choice){
-            case 1:
+            case "y":
+            case "Y":
+                Test.clear();
                 guessNbr();
                 break;
-            case 2:
+            case "n":
+            case "N":
                 Test.clear();
                 break;
         }

@@ -20,22 +20,24 @@ public class MainMenu{
                             "1 - Play Guess my Number          \n" +
                             "2 - Access the social network     \n" +
                             "\u001B[36m3 - Exit the program \u001B[m");
-        int choice = getInput.nextInt();
+        String choice = getInput.nextLine();
 
             switch (choice) {
-                case 1:
+                case "1":
                     Test.clear();
                     guessNbr.guessNbr();
                     break;
-                case 2:
+                case "2":
+                    Test.clear();
                     UserMenu menu = new UserMenu();
                     menu.showMenu();
                     break;
-                case 3:
+                case "3":
                     exit = true;
                     break;
                 default:
-                    System.out.println("\u001B[41m Option " + choice + " is invalid, please enter again \u001B[m");
+                    Test.clear();
+                    System.out.println("\u001B[41;30m Option " + choice + " is invalid, please enter again \u001B[m");
             }
         } while(!exit);
     }

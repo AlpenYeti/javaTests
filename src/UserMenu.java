@@ -18,7 +18,6 @@ public class UserMenu {
 //        new User();
         while(!exit) {
             Scanner getInput = new Scanner(System.in);
-            Test.clear();
             System.out.println(
                     "                                  \n" +
                     " ******************************** \n" +
@@ -29,8 +28,9 @@ public class UserMenu {
                     "2 - Edit my profile               \n" +
                     "3 - Write a message               \n" +
                     "4 - Read a message                \n" +
-                    "5 - How many users ?              \n" +
-                    "6 - Show a friend's profile       \n" +
+                    "5 - Display users                 \n" +
+                    "6 - Create a new user (friend)    \n" +
+                    "7 - Show a friend's profile       \n" +
                     "                                  \n" +
                     "\u001B[36m0 - Back to the main menu \u001B[m");
             choice = getInput.nextLine();
@@ -46,6 +46,7 @@ public class UserMenu {
                         User user = new User(fname,lname,birthdate);
                         list.add(user);
                     } else {
+                        Test.clear();
                         System.out.println(
                                         "\u001B[41m You already created a profile ! \u001B[m \n" +
                                         "\u001B[41m You can modify it with 2.       \u001B[m   ");
@@ -54,6 +55,7 @@ public class UserMenu {
                     break;
                 case "2":
                     if(list.isEmpty()){
+                        Test.clear();
                         System.out.println("\u001B[41m You should create a profile first \u001B[m");
                     } else {
                         System.out.println(
@@ -93,11 +95,38 @@ public class UserMenu {
                     }
                     break;
                 case "6":
+                    boolean exitSwitch = false;
+                    do{
+                        System.out.println("Prénom ?");
+                        String fname = getInput.nextLine();
+                        System.out.println("Nom ?");
+                        String lname = getInput.nextLine();
+                        System.out.println("Année de Naissance ?");
+                        String birthdate = getInput.nextLine();
+                        User user = new User(fname,lname,birthdate);
+                        list.add(user);
+                        System.out.println("Add more friends ? [Y/n]");
+                        String choice = getInput.nextLine();
+                        switch (choice){
+                            case "y":
+                            case "Y":
+                                Test.clear();
+                                break;
+                            case "n":
+                            case "N":
+                                exitSwitch = true;
+                                Test.clear();
+                                break;
+                        }
+                    } while(!exitSwitch);
+                    break;
+                case "7":
                     break;
                 case "0":
                     exit = true;
                     break;
                 default:
+                    Test.clear();
                     System.out.println("\u001B[41m Option " + choice + " is invalid, please enter again \u001B[m");
             }
         }

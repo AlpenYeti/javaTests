@@ -19,7 +19,7 @@ public class MainMenu{
                             "                                  \n" +
                             "1 - Play Guess my Number          \n" +
                             "2 - Access the social network     \n" +
-                            "3 - Exit the program               ");
+                            "\u001B[36m3 - Exit the program \u001B[m");
         int choice = getInput.nextInt();
 
             switch (choice) {
@@ -34,7 +34,7 @@ public class MainMenu{
                     exit = true;
                     break;
                 default:
-                    System.out.println("\u001B[31m Option " + choice + " is invalid, please enter again \u001B[m");
+                    System.out.println("\u001B[41m Option " + choice + " is invalid, please enter again \u001B[m");
             }
         } while(!exit);
     }

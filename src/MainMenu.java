@@ -20,7 +20,8 @@ public class MainMenu{
                             "                                  \n" +
                             "1 - Play Guess my Number          \n" +
                             "2 - Access the social network     \n" +
-                            "\u001B[36m3 - Exit the program \u001B[m");
+                            "3 - Divide !                      \n" +
+                            "\u001B[36m4 - Exit the program \u001B[m");
         String choice = getInput.nextLine();
 
             switch (choice) {
@@ -34,6 +35,20 @@ public class MainMenu{
                     menu.showMenu();
                     break;
                 case "3":
+                    Test.clear();
+                    System.out.println("Dividende");
+                    int a = getInput.nextInt();
+                    getInput.nextLine();
+                    System.out.println("Diviseur");
+                    int b = getInput.nextInt();
+                    getInput.nextLine();
+                    try {
+                        System.out.println(a/b);
+                    } catch(ArithmeticException e) {
+                        System.out.println("\u001B[41;30m Do not divide by zero, you fool !\u001B[m");
+                    }
+                    break;
+                case "4":
                     exit = true;
                     break;
                 default:
@@ -42,4 +57,15 @@ public class MainMenu{
             }
         } while(!exit);
     }
+
+//    double divide(int a, int b){
+//        double res;
+//        try {
+//            res = a/b;
+//        } catch (ArithmeticException e){
+//            System.out.println("Do not divide by zero, you fool !");
+//        } finally {
+//            return res;
+//        }
+//    }
 }

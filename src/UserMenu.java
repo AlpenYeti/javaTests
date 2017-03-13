@@ -8,14 +8,17 @@ import java.util.concurrent.TimeUnit;
  */
 public class UserMenu {
     String choice;
+    String switchChoice;
     boolean exit = false;
+    boolean exitSwitch = false;
     List<User> list = new ArrayList<>();
+    List<Message> messages = new ArrayList<>();
 
-    public UserMenu() {
+    public UserMenu() throws InterruptedException {
+        showMenu();
     }
 
-    public void showMenu() throws InterruptedException {
-//        new User();
+    void showMenu() throws InterruptedException {
         while(!exit) {
             Scanner getInput = new Scanner(System.in);
             System.out.println(
@@ -81,8 +84,24 @@ public class UserMenu {
                         break;
                     }
                 case "3":
+                    do{
+                        System.out.println("What's your message ?");
+                        String content = getInput.nextLine();
+
+                        Message message = new Message(content);
+                        messages.add(message);
+                        System.out.println("Do you write to write another one ? [Y/n]");
+                        switchChoice = getInput.nextLine();
+                        YesNoMenu();
+                    } while(!exitSwitch);
                     break;
                 case "4":
+                    System.out.println(
+                            "There are "+ messages.size() + " messages." +
+                            "Choose the message you want to read.");
+                    choice = getInput.nextLine();
+                    int numChoice = Integer.parseInt(choice)-1;
+                    System.out.println((numChoice+1) + " - " + messages.get(numChoice).content);
                     break;
                 case "5":
                     if(list.size() < 1) {
@@ -106,18 +125,8 @@ public class UserMenu {
                         User user = new User(fname,lname,birthdate);
                         list.add(user);
                         System.out.println("Add more friends ? [Y/n]");
-                        String choice = getInput.nextLine();
-                        switch (choice){
-                            case "y":
-                            case "Y":
-                                Test.clear();
-                                break;
-                            case "n":
-                            case "N":
-                                exitSwitch = true;
-                                Test.clear();
-                                break;
-                        }
+                        switchChoice = getInput.nextLine();
+                        YesNoMenu();
                     } while(!exitSwitch);
                     break;
                 case "7":
@@ -129,6 +138,19 @@ public class UserMenu {
                     Test.clear();
                     System.out.println("\u001B[41m Option " + choice + " is invalid, please enter again \u001B[m");
             }
+        }
+    }
+    void YesNoMenu() {
+        switch (switchChoice){
+            case "y":
+            case "Y":
+                Test.clear();
+                break;
+            case "n":
+            case "N":
+                exitSwitch = true;
+                Test.clear();
+                break;
         }
     }
 }

@@ -1,21 +1,19 @@
-import java.util.Scanner;
-
 /**
  * Define a User
  */
 public class User {
-    public String fname;
+    protected String fname;
     protected String lname;
     protected String birthdate;
     int choice;
     boolean exit = false;
 
-    Scanner getInput = new Scanner(System.in);
-
-   // List<User> userList = new ArrayList<>();
-
     /**
      * User Constructor
+     *
+     * @param fname
+     * @param lname
+     * @param birthdate
      */
  public User(String fname,String lname,String birthdate) {
         this.fname = fname;

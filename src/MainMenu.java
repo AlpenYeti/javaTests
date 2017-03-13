@@ -7,10 +7,11 @@ public class MainMenu{
     boolean exit = false;
 
     /***/
-    public MainMenu() {
+    public MainMenu() throws InterruptedException {
+        showMenu();
     }
 
-    public void showMenu() throws InterruptedException {
+    void showMenu() throws InterruptedException {
         do{
         Scanner getInput = new Scanner(System.in);
         System.out.println( "                                  \n" +

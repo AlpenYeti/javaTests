@@ -9,7 +9,7 @@ public class Test {
         System.out.println( "##################################\n" +
                             "#  Welcome to this test program  #\n" +
                             "##################################");
-        fakeWait(11);
+        fakeWait(3);
         MainMenu menu = new MainMenu();
         menu.showMenu();
     }
@@ -31,7 +31,7 @@ public class Test {
     private static void fakeWait(int limit) throws InterruptedException {
         for(int i=0;i<limit;i++){
             Random randomGenerator = new Random();
-            int x = randomGenerator.nextInt(1000);
+            int x = randomGenerator.nextInt(3000);
             TimeUnit.MILLISECONDS.sleep(x);
             System.out.println(".");
         }
